@@ -357,30 +357,27 @@
         <img
           [src]="'http://localhost:8080/' + libroSelecionado?.portada"
           alt="Portada del libro"
-          style="width: 400px; margin-top: 1rem"
+          style="width: 400px; margin-top: 1rem;"
         />
       </div>
-      <p><strong>Titulo:</strong>{{ libroSelecionado?.titulo }}</p>
-      <p><strong>Editorial:</strong>{{ libroSelecionado?.editorial }}</p>
-      <p><strong>Idioma:</strong>{{ libroSelecionado?.idioma }}</p>
-      <p>
-        <strong>Fecha de Publicacion:</strong
-        >{{ libroSelecionado?.fechaPublicacion }}
-      </p>
-      <p><strong>Descripcion:</strong>{{ libroSelecionado?.descripcion }}</p>
-      <p><strong>Tipo de Pasta:</strong>{{ libroSelecionado?.tipoPasta }}</p>
-      <p><strong>ISBN:</strong>{{ libroSelecionado?.iSBN }}</p>
-      <p><strong>Presentacion:</strong>{{ libroSelecionado?.presentacion }}</p>
-      <p><strong>Precio:</strong>{{ libroSelecionado?.precio| currency }}</p>
-      <p>
-        <strong>Autor:</strong>
-        {{ libroSelecionado?.autor?.nombre}}
-        {{ libroSelecionado?.autor?.apellido }}
-      </p>
-      <p><strong>Categoria:</strong>{{ libroSelecionado?.categoria?.categoria}}</p>
+
+      <p><strong>Título</strong> {{ libroSelecionado?.titulo }}</p>
+      <p><strong>Editorial</strong> {{ libroSelecionado?.editorial }}</p>
+      <p><strong>Idioma</strong> {{ libroSelecionado?.idioma }}</p>
+      <p><strong>Fecha de Publicación</strong> {{ libroSelecionado?.fechaPublicacion }}</p>
+      <p><strong>Descripcion</strong> {{ libroSelecionado?.descripcion }}</p>
+      <p><strong>Tipo de Pasta</strong> {{ libroSelecionado?.tipoPasta }}</p>
+      <p><strong>ISBN</strong> {{ libroSelecionado?.iSBN }}</p>
+      <p><strong>Presentación</strong> {{ libroSelecionado?.presentacion }}</p>
+      <p><strong>Precio</strong> {{ libroSelecionado?.precio | currency }}</p>
+      <p><strong>Autor</strong> 
+        {{ libroSelecionado?.autor?.nombre }}
+      {{ libroSelecionado?.autor?.apellido }}
+    </p>
+    <p><strong>Categoría:</strong>{{ libroSelecionado?.categoria?.categoria}}</p>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-        <button mat-button (click)="cerrarModal()">Cerrar</button>
+      <button mat-button (click)="cerrarModal()">Cerrar</button>
     </mat-dialog-actions>
   </ng-template>
 </div>

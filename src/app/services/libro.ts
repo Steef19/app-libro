@@ -13,7 +13,7 @@ export class LibroService {
   
   constructor(private http: HttpClient){}
 
-  findAll(): Observable<Libro[]>{
+findAll(): Observable<Libro[]>{
     return this.http.get<Libro[]>(this.baseUrl);
   }
 
@@ -26,12 +26,11 @@ export class LibroService {
     return this.http.post<Libro>(this.baseUrl, libro);
   }
 
-  update(id: number, libro: Libro) : Observable<Libro>{
-    return this.http.put<Libro>(`${this.baseUrl}/${id}`, libro);
-  }
+  update(id: number, idCategoria: number, idAutor: number, libro: Libro) {
+  return this.http.put(`http://localhost:8080/api/libro/${id}?idCategoria=${idCategoria}&idAutor=${idAutor}`, libro);
+}
 
   delete(id:number): Observable<void>{
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 }
-

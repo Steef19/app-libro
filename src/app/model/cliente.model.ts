@@ -5,5 +5,5 @@ export interface Cliente{
     apellido: string
     direccion: string
     telefono: string
-    correo: string
+    correo:  string 
 }

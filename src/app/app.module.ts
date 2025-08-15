@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { App } from './app';
 import { ClienteComponent } from './components/cliente/cliente';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, provideHttpClient, withFetch} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -51,7 +51,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    MatDatepickerModule
+    MatDatepickerModule,
+    provideHttpClient(withFetch())
   ],
   bootstrap: [App]
 })

@@ -84,15 +84,18 @@ export class LibroComponent implements OnInit {
   }
 
   update(): void {
-    if (this.idEditar !== null) {
-      this.libroService.update(this.idEditar, this.libro).subscribe(() => {
-        this.libro = {} as Libro;
-        this.editar = false;
-        this.idEditar = null;
-        this.findAll();
-      });
-    }
+  if (this.idEditar !== null) {
+    const idCategoria = this.libro.categoria.idCategoria;
+    const idAutor = this.libro.autor.idAutor;
+
+    this.libroService.update(this.idEditar, idCategoria, idAutor, this.libro).subscribe(() => {
+      this.libro = {} as Libro;
+      this.editar = false;
+      this.idEditar = null;
+      this.findAll();
+    });
   }
+}
 
   delete(): void {
     Swal.fire({
