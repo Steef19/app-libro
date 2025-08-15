@@ -1,0 +1,86 @@
+<div class="container mt-4" #formularioCategoria>
+  <h2>{{ editar ? 'Editar Categoria' : 'Agregar Categoria' }}</h2>
+
+  <form (ngSubmit)="guardar(formCategoria)" #formCategoria="ngForm" novalidate>
+    <div class="row">
+      <div class="col-md-4 mb-2">
+        <input class="form-control" type="number" placeholder="ID Categoria"
+          [(ngModel)]="categoria.idCategoria"
+          name="idCategoria"
+          required
+          #idCat="ngModel"
+          [ngClass]="{'is-invalid': idCat.invalid && idCat.touched}" />
+      </div>
+      <div class="col-md-4 mb-2">
+        <input class="form-control" type="text" placeholder="Categoria"
+          [(ngModel)]="categoria.categoria"
+          name="categoria"
+          required
+          #cat="ngModel"
+          [ngClass]="{'is-invalid': cat.invalid && cat.touched}" />
+      </div>
+      <div class="col-md-4 mb-2">
+        <input class="form-control" type="text" placeholder="Descripción"
+          [(ngModel)]="categoria.descripcion"
+          name="descripcion"
+          required
+          #desc="ngModel"
+          [ngClass]="{'is-invalid': desc.invalid && desc.touched}" />
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary me-2" [disabled]="formCategoria.invalid">
+      <mat-icon>{{ editar ? 'edit' : 'add' }}</mat-icon>
+    </button>
+
+    <button type="button" class="btn btn-secondary" *ngIf="editar" (click)="editarCategoriaCancelar(formCategoria)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </form>
+
+  <hr class="my-4" />
+
+  <h3>Lista de Categorías</h3>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="filtroCategorias($event)" placeholder="Buscar Categoria" />
+  </mat-form-field>
+
+  <div class="table-responsive">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 w-100">
+      <ng-container matColumnDef="idCategoria">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let c">{{ c.idCategoria }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
+        <td mat-cell *matCellDef="let c">{{ c.categoria }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+        <td mat-cell *matCellDef="let c">{{ c.descripcion }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let a">
+          <div class="d-flex gap-1">
+            <button class="btn btn-warning btn-sm me-1" (click)="editarCategoria(a)">
+              <mat-icon class="me-1">edit</mat-icon>
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="categoria = a; delete()">
+              <mat-icon class="me-1">delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="mostrarColumnas"></tr>
+      <tr mat-row *matRowDef="let row; columns: mostrarColumnas;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
