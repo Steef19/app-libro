@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environmet } from '../../environments.ts/environments';
+import { environment } from '../../environments.ts/environments';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { getCartToken } from '../core/cart-token';
 import { Observable } from 'rxjs';
@@ -8,8 +8,8 @@ import { Carrito } from '../model/carrito.model';
 @Injectable({
   providedIn: 'root'
 })
-export class GuestCarrito {
-  private base = `${environmet.baseURL}/guest/cart`;
+export class GuestcarritoService {
+  private base = `${environment.baseURL}/guest/cart`;
 
   constructor(private http: HttpClient){}
 

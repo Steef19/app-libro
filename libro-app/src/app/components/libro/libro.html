@@ -1,3 +1,39 @@
+<mat-toolbar color="primary" class="topbar">
+    <a mat-button class="brand" routerLink="/libors1">
+        <mat-icon class="brand-logo" fontSet="Material-icon-outlined" fontIcon="menu_book"></mat-icon>
+        <span class="brand-name">Libreria NAV</span>
+    </a>
+<a mat-button routerLink="/categorias" routerLinkActive="active">
+    <mat-icon fontSet="Material-icon-outlined">category</mat-icon>
+    <span>Categorias</span>
+
+</a>
+
+<a mat-button routerLink="/autores" routerLinkActive="active">
+    <mat-icon fontSet="Material-icon-outlined">person</mat-icon>
+    <span>Autores</span>
+</a>
+
+<a mat-button routerLink="/clientes" routerLink="active">
+        <mat-icon fontSet="material-icons-outlined">groups</mat-icon>
+        <span> Clientes</span>
+    </a>
+
+    <a mat-button routerLink="/libros" routerLink="active">
+        <mat-icon fontSet="material-icons-outlined">library_book</mat-icon>
+        <span> libros</span>
+    </a>
+    <span class="spacer"></span>
+    <a mat-stroked-button color="accent" routerLink="/carrito">
+        <mat-icon fontSet="material-icons-outlined" > shopping_cart</mat-icon>
+        <span>Carrito</span>
+    </a>
+
+
+</mat-toolbar>
+
+
+
 <div class = "container mt-4">
     <h1>Libro</h1>
     <div class="d-flex justify-content-center mb-3">
