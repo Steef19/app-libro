@@ -1,0 +1,59 @@
+<mat-toolbar color="btn-primary" class="topbar">
+  <a mat-button class="brand" routerLink="/libros1">
+    <mat-icon class="brand-logo" fontSet="material-icons-outlined" fontIcon="menu_book"></mat-icon>
+    <span class="brand-name">Libreria NAV</span>
+  </a>
+
+  <a mat-button routerLink="/categorias" routerLinkActive="active">
+    <mat-icon fontSet="material-icons-outlined">category</mat-icon>
+    <span>Categorías</span>
+  </a>
+
+  <a mat-button routerLink="/autores" routerLinkActive="active">
+    <mat-icon fontSet="material-icons-outlined">person</mat-icon>
+    <span>Autores</span>
+  </a>
+
+  <a mat-button routerLink="/clientes" routerLinkActive="active">
+    <mat-icon fontSet="material-icons-outlined">groups</mat-icon>
+    <span>Clientes</span>
+  </a>
+
+  <a mat-button routerLink="/libros" routerLinkActive="active">
+    <mat-icon fontSet="material-icons-outlined">library_books</mat-icon>
+    <span>Libros</span>
+  </a>
+
+  <span class="spacer"></span>
+
+  <a mat-stroked-button color="accent" routerLink="/carrito">
+    <mat-icon fontSet="material-icons-outlined">shopping_cart</mat-icon>
+    <span>Carrito</span>
+  </a>
+</mat-toolbar>
+
+
+
+<div class="grid" *ngIf="!loading; else loader">
+  <mat-card class="book" *ngFor="let l of libros">
+    <img
+      mat-card-image
+      [src]="'http://localhost:8080/' + (l.portada || 'portadas/noimage.png')"
+      alt="{{ l.titulo }}"
+    />
+    <mat-card-content>
+      <h3>{{ l.titulo }}</h3>
+      <p class="autor">{{ l.autor.nombre }} {{ l.autor.apellido }}</p>
+      <p class="precio">{{ l.precio | currency : "USD" }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="add(l)">
+        <mat-icon>add_shopping_cart</mat-icon> Agregar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<ng-template #loader>
+    <div class="center"><mat-spinner></mat-spinner></div>
+</ng-template>

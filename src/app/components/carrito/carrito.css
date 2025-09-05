@@ -1,0 +1,14 @@
+.spacer{flex: 1 1 auto;}
+.wrep{padding: 16px; display: grid; grid-template-columns: 1fr 320px; gap: 16px; }
+table{width: 100%;}
+.libro{display: flex; gap: 12px; align-items: center;}
+.libro img{width: 52px; height: 70px; object-fit: cover; border-radius: 4px;}
+.libro .t{font-weight: 600;}
+.qty{display: flex; align-items: center; gap: 6px;}
+.qty input{ width: 72px; text-align: center;}
+.totales{padding: 16px; border-radius: 8px; display: flex; flex-direction: column; gap: 8px;}
+.totales div{display: flex; justify-content: space-between;}
+.totales .grand{margin-top: 8px; font-size: 10px; }
+.acciones{display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px;}
+.empty{display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px;}
+@media(max-width: 900px){ .wrap{grid-template-columns: 1fr;}}

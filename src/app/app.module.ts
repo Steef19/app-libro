@@ -3,24 +3,34 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { App } from './app';
 import { ClienteComponent } from './components/cliente/cliente';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule, provideHttpClient, withFetch} from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-import {MatInputModule} from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field'; 
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withFetch,
+} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { AutorComponent } from './components/autor/autor';
 import { CategoriaComponent } from './components/categoria/categoria';
 import { LibroComponent } from './components/libro/libro';
-import {MatSelectModule} from '@angular/material/select';
-import {MatOptionModule, MatNativeDateModule} from '@angular/material/core';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatToolbarModule}from '@angular/material/toolbar';
+import {MatCardModule} from '@angular/material/card';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { CarritoComponent } from './components/carrito/carrito';
+import { LibrosListComponent } from './components/libros-list/libros-list';
+import { MatMenuModule } from '@angular/material/menu'
 
 @NgModule({
   declarations: [
@@ -28,7 +38,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     ClienteComponent,
     AutorComponent,
     CategoriaComponent,
-    LibroComponent
+    LibroComponent,
+    CarritoComponent,
+    LibrosListComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,13 +59,19 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatOptionModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatMenuModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     MatDatepickerModule,
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
   ],
-  bootstrap: [App]
+  bootstrap: [App],
 })
-export class AppModule { }
+export class AppModule {}

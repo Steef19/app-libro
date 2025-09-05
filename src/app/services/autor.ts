@@ -7,7 +7,7 @@ import { Autor }  from '../model/autor.model';
     providedIn: 'root'
 })
 export class AutorService {
-    private baseUrl = 'http://localhost:8080/autor';  // URL to web servic
+    private baseUrl = 'http://localhost:8080/api/autores';  
     constructor(private http: HttpClient) { }
 
     findAll(): Observable<Autor[]>{
@@ -22,9 +22,9 @@ export class AutorService {
         return this.http.post<Autor>(this.baseUrl, autor);
     }
 
-    update(id: number, autor: Autor): Observable<Autor> {
-        return this.http.put<Autor>(`${this.baseUrl} /${id} `,autor);
-    }
+update(id: number, autor: Autor): Observable<Autor> {
+  return this.http.put<Autor>(`${this.baseUrl}/${id}`, autor);
+}
 
     delete(id: number): Observable<void>{
         return this.http.delete<void>(`${this.baseUrl}/${id}`);

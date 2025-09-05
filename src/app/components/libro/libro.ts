@@ -192,7 +192,7 @@ export class LibroComponent implements OnInit {
       formData.append('oldImage', this.libro.portada);
     }
 
-    this.http.post<{ruta: string}>('http://localhost:8080/api/upload-portada', formData).subscribe(res => {
+    this.http.post<{ruta: string}>('http://localhost:8080/api/uploads-portadas', formData).subscribe(res => {
       this.libro.portada= res.ruta;
       this.imagenPreview= res.ruta;
      });

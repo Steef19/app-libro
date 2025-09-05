@@ -1,0 +1,6 @@
+.spacer{flex: 1 1 auto;}
+.grid{display: grid; grid-template-columns: repeat(auto-fill, mimax(240px, 1fr)); gap: 16px; padding: 16px;}
+.book img{height: 200px; object-fit: cover;}
+.autor{opacity: .7; margin: 0;}
+.precio{font-weight: 700; margin: 6px 0 0;}
+.center{display: flex; justify-content: center; padding: 24px;}

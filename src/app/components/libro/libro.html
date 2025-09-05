@@ -1,8 +1,42 @@
+<mat-toolbar color="btn-primary" class="topbar">
+  <a mat-button class="brand" routerLink="/libros1">
+    <mat-icon class="brand-logo" fontSet="material-icons-outlined" fontIcon="menu_book"></mat-icon>
+    <span class="brand-name">Libreria NAV</span>
+  </a>
+
+  <a mat-button routerLink="/categorias" routerLinkActive="active">
+    <mat-icon fontSet="material-icons-outlined">category</mat-icon>
+    <span>Categorías</span>
+  </a>
+
+  <a mat-button routerLink="/autores" routerLinkActive="active">
+    <mat-icon fontSet="material-icons-outlined">person</mat-icon>
+    <span>Autores</span>
+  </a>
+
+  <a mat-button routerLink="/clientes" routerLinkActive="active">
+    <mat-icon fontSet="material-icons-outlined">groups</mat-icon>
+    <span>Clientes</span>
+  </a>
+
+  <a mat-button routerLink="/libros" routerLinkActive="active">
+    <mat-icon fontSet="material-icons-outlined">library_books</mat-icon>
+    <span>Libros</span>
+  </a>
+
+  <span class="spacer"></span>
+
+  <a mat-stroked-button color="accent" routerLink="/carrito">
+    <mat-icon fontSet="material-icons-outlined">shopping_cart</mat-icon>
+    <span>Carrito</span>
+  </a>
+</mat-toolbar>
+
 <div class="container mt-4">
   <h1>Libro</h1>
   <div class="d-flex justify-content-center mb-3">
-    <button mat-raised-button color="primary" (click)="abrirModal()">
-      <mat-icon>add</mat-icon>AgregarLibro
+    <button mat-raised-button color="accent" (click)="abrirModal()">
+      <mat-icon>add</mat-icon> Agregar Libro
     </button>
   </div>
 
@@ -89,10 +123,10 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
         <td mat-cell *matCellDef="let l">
           <div class="d-flex gap-1">
-            <button class="btn btn-warning btn-sm me-1" (click)="abrirModal(l)">
+            <button mat-raised-button color="accent" (click)="abrirModal(l)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button class="btn btn-danger btn-sm" (click)="libro = l; delete()">
+            <button mat-raised-button color="warn" (click)="libro = l; delete()">
               <mat-icon>delete</mat-icon>
             </button>
           </div>
@@ -105,6 +139,7 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons>
     </mat-paginator>
   </div>
+
   <ng-template #modalLibro>
     <mat-dialog-content>
       <h2 mat-dialog-title>
@@ -337,11 +372,12 @@
         </div>
       </form>
     </mat-dialog-content>
+
     <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancelar</button>
+      <button mat-button mat-dialog-close color="warn">Cancelar</button>
       <button
         mat-flat-button
-        color="primary"
+        color="accent"
         (click)="guardarLibro()"
         [disabled]="formLibro.invalid"
       >
@@ -372,12 +408,12 @@
       <p><strong>Precio</strong> {{ libroSelecionado?.precio | currency }}</p>
       <p><strong>Autor</strong> 
         {{ libroSelecionado?.autor?.nombre }}
-      {{ libroSelecionado?.autor?.apellido }}
-    </p>
-    <p><strong>Categoría:</strong>{{ libroSelecionado?.categoria?.categoria}}</p>
+        {{ libroSelecionado?.autor?.apellido }}
+      </p>
+      <p><strong>Categoría:</strong>{{ libroSelecionado?.categoria?.categoria}}</p>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-      <button mat-button (click)="cerrarModal()">Cerrar</button>
+      <button mat-button (click)="cerrarModal()" color="warn">Cerrar</button>
     </mat-dialog-actions>
   </ng-template>
 </div>

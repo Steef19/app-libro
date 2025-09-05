@@ -1,0 +1,79 @@
+<mat-toolbar color="primary">
+    <button mat-button routerLink="/libros1"><mat-icon>arrow_back</mat-icon>Seguir Comprando</button>
+    <span class="spacer"></span>
+    <span>Carrito</span>
+
+    <button mat-button [matMenuTriggerFor]="mas">Más</button>
+    <mat-menu #mas="matMenu">
+        <button mat-menu-item routerLink="/categorias">Categorías</button>
+        <button mat-menu-item routerLink="/autores">Autores</button>
+        <button mat-menu-item routerLink="/clientes">Clientes</button>
+        <button mat-menu-item routerLink="/libros">Libros</button>
+    </mat-menu>
+
+</mat-toolbar>
+
+<div class="wrap" *ngIf="carrito && carrito.items?.length; else vacio">
+    <table mat-table [dataSource]="carrito.items" class="mat-elevation-z1">
+        <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef> Libro</th>
+            <td mat-cell *matCellDef="let it">
+                <img [src]="'http://localhost:8080/' + (it.libro.portada || 'portadas/noimage.png')" alt="">
+                <div>
+                    <div class="t">{{ it.libro.titulo }}</div>
+                    <small>Stock: {{it.libro.numEjemplares ?? '-' }}</small>
+                </div>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="precio">
+            <th mat-header-cell *matHeaderCellDef>Precio</th>
+            <td mat-cell *matCellDef="let it">{{ it.precioUnitario | currency:'USD'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="cantidad">  
+            <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+            <td mat-cell *matCellDef="let it">
+                <div class="qty">
+                    <button mat-mini-fab (click)="updateCantidad(it.idCarritoItem!, it.cantidad-1)">
+                        <mat-icon>remove</mat-icon>
+                    </button>
+                    <input matInput type="number" min="0" [value]="it.cantidad" 
+                    (change)="updateCantidad(it.idCarritoItem!, $any($event.target).valueAsNumber)">
+                    <button mat-mini-fab color="primary" (click)="updateCantidad(it.idCarritoItem!, it.cantidad + 1)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef>Total</th>
+            <td mat-cell *matCellDef="let it">{{ it.total  | currency: 'USD'}}</td>
+        </ng-container>        
+        <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let it">
+                <button mat-icon-button color="warn" (click)="remove(it.idCarritoItem)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayed"></tr>
+        <tr mat-row *matRowDef="let row; columns:displayed;"></tr>
+    </table>
+    <div class="totales mat-elevation-z1">
+        <div><span>Subtotal:</span><strong>{{carrito.subtotal | currency: 'USD'}}</strong></div>
+        <div><span>Impuestos:</span><strong>{{carrito.impuestos | currency: 'USD'}}</strong></div>
+        <div class="grand"><span>Total:</span><strong>{{carrito.total | currency: 'USD'}}</strong></div>
+        <div class="acciones">
+            <button mat-stroked-button color="warn" (click)="clear()">Vaciar</button>
+            <button mat-raised-button color="primary" (click)="checkout()">Pagar</button>
+        </div>
+    </div>
+</div>
+
+<ng-template #vacio>
+    <div class="empty">
+        <p>Tu Carrito esta Vacio</p>
+        <a mat-stroked-button color="primary" routerLink="/libros1"> <mat-icon> shopping_bag </mat-icon>Ver Libros</a>
+    </div>
+</ng-template>

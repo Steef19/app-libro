@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LibroService {
   
-  private baseUrl="http://localhost:8080/api/libro";
+  private baseUrl="http://localhost:8080/api/libros";
   
   constructor(private http: HttpClient){}
 
@@ -27,7 +27,7 @@ findAll(): Observable<Libro[]>{
   }
 
   update(id: number, idCategoria: number, idAutor: number, libro: Libro) {
-  return this.http.put(`http://localhost:8080/api/libro/${id}?idCategoria=${idCategoria}&idAutor=${idAutor}`, libro);
+  return this.http.put(`http://localhost:8080/api/libros/${id}?idCategoria=${idCategoria}&idAutor=${idAutor}`, libro);
 }
 
   delete(id:number): Observable<void>{

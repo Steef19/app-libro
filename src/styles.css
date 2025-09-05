@@ -2,3 +2,34 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.topbar .spacer{flex: 1 1 auto;}
+.topbar a.mat-button, .topbar a.mat-stroked-button{text-transform: none;}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 8px;
+    padding-left: 0;
+}
+
+.brand-logo {
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+}
+
+.brand-name{
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: .2px;
+}
+
+mat-icon {margin-right: 6px;}
+
+a.active{
+    background: (255, 255, 255, .14);
+    border-radius: 6px;
+}
